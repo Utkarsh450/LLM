@@ -1,0 +1,6 @@
+2025-09-28 22:25:34 [[31merror[39m]: Error connecting to MongoDB The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+2025-09-28 22:28:04 [[31merror[39m]: Error connecting to MongoDB The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+2025-09-29 18:57:24 [[31merror[39m]: JWT verification error: jwt must be provided
+2025-09-29 18:57:25 [[31merror[39m]: JWT verification error: jwt must be provided
+2025-09-29 19:05:22 [[31merror[39m]: JWT verification error: jwt must be provided
+2025-09-29 19:06:15 [[31merror[39m]: JWT verification error: jwt must be provided
