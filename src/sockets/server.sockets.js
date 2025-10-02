@@ -6,6 +6,7 @@ const userModel = require("../models/user.models");
 const messageModel = require("../models/messages.models");
 const {generateVector, generateResponse} = require("../services/ai.service");
 const { createMemory, queryMemory } = require("../services/vector.service");
+const { tools } = require("../utils/agent.utils");
 
 async function initSocketServer(httpServer) {
   const io = new Server(httpServer, {});
@@ -83,11 +84,19 @@ ${memory.map((item) => item.metadata.text).join("\n")}
             }
         })
         
-        const aiResponse = await generateResponse([...ltm]);
+        const aiResponse = await generateResponse([...ltm], [...stm]);
+
+          if (aiResponse.functionCalls && aiResponse.functionCalls[0]) {
+        const call = aiResponse.functionCalls[0];
+        const result = await tools[call.name](call.args);
+        const content = result.map(r => r.content).join("\n");
+
+        finalText = `I searched for "${call.args.query}" and found:\n${content}`;
+    }
         await messageModel.create({
             chat: messagesPayload.chat,
             user: socket.user._id,
-            content: aiResponse,
+            content: finalText,
             role: "model",
         })
         const aiVector = await generateVector(aiResponse);
@@ -97,10 +106,10 @@ ${memory.map((item) => item.metadata.text).join("\n")}
             metadata: {
                 user: socket.user._id,
                 chat: messagesPayload.chat,
-                text: aiResponse,
+                text: finalText,
             }
         })
-        socket.emit("ai-response", aiResponse);
+        socket.emit("ai-response", finalText);
     })
 
     socket.on("disconnect", () => {

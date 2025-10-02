@@ -9,7 +9,7 @@ connectToDB();
 initSocketServer(httpServer);
 
 
-httpServer.listen(3000, ()=>{
-    logger.info("Server is running at port 3000");
+httpServer.listen(3001, ()=>{
+    logger.info("Server is running at port 3001");
 })
 
