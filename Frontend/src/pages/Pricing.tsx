@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 /**
  * Google Workspace–style pricing page (replica) using React + Tailwind CSS.
@@ -122,7 +122,7 @@ export default function WorkspaceStylePricing() {
                 <article
                   key={plan.id}
                   className={classNames(
-                    "relative rounded-[24px] bg-white border p-5 sm:p-6 flex flex-col",
+                    "relative rounded-[3xl bg-white border p-5 sm:p-6 flex flex-col",
                     plan.emphasized
                       ? "border-blue-600 shadow-[0_0_0_1px_rgba(37,99,235,0.4),0_10px_20px_-10px_rgba(2,6,23,0.25)]"
                       : "border-slate-200 shadow-sm"
@@ -130,7 +130,7 @@ export default function WorkspaceStylePricing() {
                 >
                   {/* Emphasis ring */}
                   {plan.emphasized && (
-                    <div className="absolute inset-0 rounded-[24px] pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px rgba(37,99,235,0.5)" }} />
+                    <div className="absolute inset-0 rounded-3xl pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px rgba(37,99,235,0.5)" }} />
                   )}
 
                   <header className="mb-4">
@@ -181,7 +181,7 @@ export default function WorkspaceStylePricing() {
                   <div className="mt-4 grow" />
 
                   {/* Subtle card bevel to match screenshot vibe */}
-                  <div className="mt-6 h-3 rounded-b-[20px] bg-gradient-to-t from-slate-50" />
+                  <div className="mt-6 h-3 rounded-b-[20px] bg-linear-to-t from-slate-50" />
                 </article>
               ))}
             </div>
