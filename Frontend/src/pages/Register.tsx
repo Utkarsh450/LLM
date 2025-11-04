@@ -3,7 +3,7 @@ import React from 'react'
 const Register: React.FC = () => {
   return (
     <div className='w-full h-screen'>
-      <div className='flex items-center flex-col gap-4 justify-center'>
+      <div className='flex items-center flex-col gap-4 justify-center'> 
         <div className='flex flex-col gap-4 font-["satoshi"]'>
           <div>
             <h1 className='text-3xl font-thin tracking-tighter mb-3 px-5'>Create a account</h1>
