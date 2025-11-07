@@ -4,6 +4,8 @@ import ChatInterface from "../pages/ChatInterface"
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Pricing from '../pages/Pricing'
+import Key from '../pages/Key'
+import Loginkey from '../pages/Loginkey'
 
 const MainRoutes: React.FC = () => {
   return (
@@ -11,7 +13,9 @@ const MainRoutes: React.FC = () => {
         <Route path="/" element={<Home/>}/>
         <Route path="/chat" element={<ChatInterface/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="/SignUp" element={<Register/>}/>
+        <Route path="/login/password" element={<Loginkey/>}/>
+        <Route path="/register/password" element={<Key/>}/>
+        <Route path="/register" element={<Register/>}/>
         <Route path="/pricing" element={<Pricing/>}/>
     </Routes>
   )

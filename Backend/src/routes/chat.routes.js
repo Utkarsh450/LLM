@@ -10,7 +10,7 @@ router.post("/createChat", authUser, createChat)
 /* GET - /api/chat/getChats */
 router.get("/getChats", authUser, getChats)
 /* GET - /api/chat/getMessages/:chatId */
-router.get("/getMessages/:chatId", authUser, getMessages)
+router.get("/:chatId", authUser, getMessages)
 
 router.post("/uploads",authUser, upload.array("files", 5), uploadsController);
 module.exports = router;
