@@ -1,7 +1,18 @@
 import { Github, Chrome } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../store/store';
+import { asyncregisteruser } from '../store/actions/userActions';
+import { asynccreatechat, asyncDeleteChatById, asyncFetchChats } from '../store/actions/chatActions';
  const Login: React.FC = ()=> {
+  const dispatch = useDispatch<AppDispatch>();
+  const handleSubmit = ()=>{
+    // dispatch(asyncFetchChats())
+    // dispatch(asyncDeleteChatById())
+    // dispatch(asynccreatechat("hi"))
+    dispatch(asyncregisteruser(
+      {fullName: {firstName: "test4", lastName: "test5"},email: "test@gmail.com", password:"test@1234" }))
+  }
   return (
     <div className="w-full h-screen">
       <div className="flex items-center flex-col gap-10 justify-center mt-10">
@@ -39,6 +50,7 @@ import { Link } from 'react-router-dom';
           </div>
         </div>
       </div>
+      <button onClick={handleSubmit} className='px-3 py-2 rounded-full bg-red-500'>Click me</button>
     </div>
   );
 }

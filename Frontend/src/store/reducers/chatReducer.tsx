@@ -24,15 +24,11 @@ const chatListSlice = createSlice({
   name: "chatList",
   initialState,
   reducers: {
-    setChats: (state, action: PayloadAction<ChatItem[]>) => {
-      state.chats = action.payload;
-    },
     addChat: (state, action: PayloadAction<ChatItem>) => {
       state.chats.unshift(action.payload);
     },
-    updateChat: (state, action: PayloadAction<{ chatId: string; changes: Partial<ChatItem> }>) => {
-      const i = state.chats.findIndex(c => c.chatId === action.payload.chatId);
-      if (i >= 0) state.chats[i] = { ...state.chats[i], ...action.payload.changes };
+    setChats: (state, action: PayloadAction<ChatItem[]>)=>{
+      state.chats = (action.payload)
     },
     removeChatById: (state, action: PayloadAction<string>) => {
       state.chats = state.chats.filter(c => c.chatId !== action.payload);
@@ -57,9 +53,8 @@ const chatListSlice = createSlice({
 });
 
 export const {
-  setChats,
   addChat,
-  updateChat,
+  setChats,
   removeChatById,
   setActiveChatId,
   setChatLoading,
