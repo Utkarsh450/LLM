@@ -61,7 +61,8 @@ async function uploadsController(req, res) {
 }
 
 async function deleteChatById(req, res) {
-  const { id } = req.body;
+    logger.info("hi i m deletehandler i get you")
+  const { id } = req.params;
   if (!id) {
     return res.status(400).json({ message: "Chat ID is required" });
   }

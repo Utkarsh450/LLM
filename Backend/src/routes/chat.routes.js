@@ -11,8 +11,8 @@ router.post("/createChat", authUser, createChat)
 router.get("/getChats", authUser, getChats)
 /* GET - /api/chat/getMessages/:chatId */
 router.get("/:chatId", authUser, getMessages)
-router.post("/deletChat/:id", authUser, deleteChatById);
-router.post("/deletChats", authUser, deleteChats);
+router.delete("/deletChat/:id", authUser, deleteChatById);
+router.delete("/deletChats", authUser, deleteChats);
 
 router.post("/uploads",authUser, upload.array("files", 5), uploadsController);
 module.exports = router;

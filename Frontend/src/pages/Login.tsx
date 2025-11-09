@@ -2,17 +2,23 @@ import { Github, Chrome } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../store/store';
-import { asyncregisteruser } from '../store/actions/userActions';
+import { asyncLoadUserFromLocalStorage, asyncregisteruser } from '../store/actions/userActions';
 import { asynccreatechat, asyncDeleteChatById, asyncFetchChats } from '../store/actions/chatActions';
+import { useEffect } from 'react';
  const Login: React.FC = ()=> {
   const dispatch = useDispatch<AppDispatch>();
   const handleSubmit = ()=>{
     // dispatch(asyncFetchChats())
-    // dispatch(asyncDeleteChatById())
+    dispatch(asyncDeleteChatById("690f93d09861563e94081083"))
     // dispatch(asynccreatechat("hi"))
-    dispatch(asyncregisteruser(
-      {fullName: {firstName: "test4", lastName: "test5"},email: "test@gmail.com", password:"test@1234" }))
+    // dispatch(asyncregisteruser(
+    //   {fullName: {firstName: "test4", lastName: "test5"},email: "test@gmail.com", password:"test@1234" }))
   }
+
+  useEffect(()=>{
+        dispatch(asyncLoadUserFromLocalStorage());
+        dispatch(asyncFetchChats())
+  }, [])
   return (
     <div className="w-full h-screen">
       <div className="flex items-center flex-col gap-10 justify-center mt-10">
